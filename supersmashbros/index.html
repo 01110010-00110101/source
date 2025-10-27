@@ -1,38 +1,60 @@
-<html>
-    <head>
-        <script src="/js/all.js"></script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WannaSmile | Smash Bros (N64)</title>
+  <script src="/js/all.js"></script>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background: #000;
+      overflow: hidden;
+    }
+    #game {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <div id="game"></div>
 
-        <style>
-            body, html {
-                margin: 0;
-                padding: 0;
-            }
-        </style>
-    </head>
-    <body>
-        <div style="width:100%;height:100%;max-width:100%">
-            <div id="game"></div>
-        </div>
-        <script>
-            EJS_player = "#game";
-            EJS_core = "CORE_NAME";
-            EJS_pathtodata = "/emulatorjs/data/";
-            EJS_gameUrl = "smashbros.n64";
-            EJS_core = 'n64';
-        </script>
-        <script src="/emulatorjs/data/loader.js"></script>
-    </body>
+  <script>
+    /* ==========================
+       EmulatorJS Configuration
+       ========================== */
+    const EJS_player = "#game";
+    const EJS_core = "n64";
+    const EJS_gameUrl = "/roms/smashbros.n64"; // adjust ROM path if needed
+    const EJS_pathtodata = "/emulatorjs/data/";
+
+    // Optional: show control mappings when emulator is ready
+    document.addEventListener("EJS_READY", () => {
+      if (typeof EJS_emulator !== "undefined") {
+        const controls = [];
+        const keyboardMap = EJS_emulator.keyboardMap || {};
+        let output = "";
+
+        const controlSet = Object.values(EJS_emulator.controls?.[0] || {});
+        for (const c of controlSet) {
+          const key = keyboardMap[c[0]] || c[0];
+          controls.push([key, c[1]]);
+        }
+
+        for (const [key, action] of controls) {
+          output += `${key}, ${action}\n`;
+        }
+
+        console.log("[Controls Loaded]\\n" + output);
+      }
+    });
+  </script>
+
+  <!-- Load emulator last -->
+  <script src="/emulatorjs/data/loader.js"></script>
+</body>
 </html>
-<!--
-let controls = [];
-let controls_alert = "";
-for(let i = 0; i < Object.values(EJS_emulator.controls[0]).length; i++) {
- 	let temparray = [];
-	temparray.push(keyboardMap[Object.values(EJS_emulator.controls[0][i])[0]]);
-	temparray.push(Object.values(EJS_emulator.controls[0][i])[1]);
-	controls.push(temparray);
-};
-for(i = 0; i < controls.length; i++) {
-	controls_alert = controls_alert + controls[i][0] + ", " + controls[i][1] + "\n";
-};
--->
