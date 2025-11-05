@@ -1,5 +1,4 @@
 ## Selenite
-<!--https://gamaverse.com/c/f/g/i-woke-up-next-to-you-again/-->
 The better unblocked games website.
 ## Deploy to a cloud service
 [![Deploy on Railway](https://binbashbanana.github.io/deploy-buttons/buttons/remade/railway.svg)](https://railway.app/new/template?template=https://github.com/selenite-cc/selenite)
