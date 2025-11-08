@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Pokémon Fire Red</title>
-  <script src="/emulatorjs/data/loader.js"></script>
+
   <style>
     html, body {
       margin: 0;
@@ -19,15 +19,19 @@
       height: 100vh;
     }
   </style>
+
+  <script>
+    // EmulatorJS configuration MUST come before loader.js
+    var EJS_player = "#game";
+    var EJS_core = "gba";
+    var EJS_gameUrl = "/pokemon/firered/firered.gba"; // correct path
+    var EJS_pathtodata = "/emulatorjs/data/"; // must point to emulatorjs folder
+  </script>
+
+  <!-- load emulator AFTER variables -->
+  <script src="/emulatorjs/data/loader.js"></script>
 </head>
 <body>
   <div id="game"></div>
-
-  <script>
-    EJS_player = "#game";
-    EJS_core = "gba";
-    EJS_pathtodata = "/emulatorjs/data/";
-    EJS_gameUrl = "firered.gba"; // Ensure this file is in the same folder or accessible via URL
-  </script>
 </body>
 </html>
