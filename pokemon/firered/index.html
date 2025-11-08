@@ -1,106 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Pokémon Fire Red</title>
-  <link rel="icon" href="https://raw.githubusercontent.com/bguhm/bguhm.github.io/main/library/images/pkmn.png">
+  <script src="/emulatorjs/data/loader.js"></script>
   <style>
-    body {
+    html, body {
       margin: 0;
       padding: 0;
-      height: 100vh;
-      background-color: #000;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      color: #FFD700;
-      font-family: Arial, sans-serif;
-      text-align: center;
-    }
-
-    h2 {
-      margin: 20px 0;
-    }
-
-    /* Image container */
-    .image-preview {
-      width: 200px;
-      height: 200px;
-      border-radius: 10%;
-      overflow: hidden;
-      margin-bottom: 20px;
-      border: 3px solid #FFD700;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: #111;
-    }
-
-    .image-preview img {
+      background: black;
       width: 100%;
       height: 100%;
-      object-fit: cover;
-      image-rendering: pixelated;
+      overflow: hidden;
     }
-
-    .button-container {
-      display: flex;
-      gap: 20px;
-    }
-
-    button {
-      background-color: #FFD700;
-      color: #000;
-      font-size: 16px;
-      font-weight: bold;
-      padding: 12px 24px;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: transform 0.2s, background 0.2s;
-    }
-
-    button:hover {
-      transform: scale(1.05);
-      background: #ffea4d;
+    #game {
+      width: 100vw;
+      height: 100vh;
     }
   </style>
 </head>
 <body>
-  <h2>Do you want to download <strong>firered.gba</strong>?</h2>
-
-  <!-- Preview Image -->
-  <div class="image-preview">
-    <img src="https://raw.githubusercontent.com/bguhm/bguhm.github.io/main/library/images/pokemon-firered.png" alt="Pokémon FireRed Preview">
-  </div>
-
-  <!-- Buttons -->
-  <div class="button-container">
-    <button onclick="downloadAndRedirect()">Yes, download and redirect to emulator</button>
-    <button onclick="skipToEmulator()">No, skip to emulator</button>
-  </div>
+  <div id="game"></div>
 
   <script>
-    function downloadAndRedirect() {
-      // Trigger download
-      const link = document.createElement("a");
-      link.href = "firered.gba"; // replace with actual gba file path
-      link.download = "firered.gba";
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-
-      // Redirect after 2 seconds
-      setTimeout(() => {
-        window.location.href = "https://bguhm.github.io./library/emulatorjs/index.html";
-      }, 2000);
-    }
-
-    function skipToEmulator() {
-      window.location.href = "https://bguhm.github.io./library/emulatorjs/index.html";
-    }
+    EJS_player = "#game";
+    EJS_core = "gba";
+    EJS_pathtodata = "/emulatorjs/data/";
+    EJS_gameUrl = "firered.gba"; // Ensure this file is in the same folder or accessible via URL
   </script>
 </body>
 </html>
