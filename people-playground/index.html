@@ -132,9 +132,50 @@
             script.onload = () => {
                 createUnityInstance(canvas, config, (progress) => {
                     progressBarFull.style.width = 100 * progress + "%";
-                }).then((unityInstance) => {
-                    loadingBar.style.display = "none";
-                    document.querySelector("#loading-text").remove();
+}).then((unityInstance) => {
+    loadingBar.style.display = "none";
+    document.querySelector("#loading-text").remove();
+
+    // ✅ Show controls list after game loads
+    alert(`[People Playground Controls]
+======================================
+BASIC:
+Space – Pause / Resume
+J – Step Frame / Slow Motion
+E – Spawn Menu
+Delete – Delete Object
+Ctrl + D – Duplicate Object
+F – Freeze / Activate
+WASD – Move Camera
+Scroll – Zoom / Rotate
+R – Rotate Object
+Ctrl + Drag – Multi-select
+Ctrl + X – Clear Scene
+
+TOOLS:
+1 – Select Tool
+2 – Wire Tool
+3 – Electricity Tool
+4 – Logic Tool
+5 – Surface Tool
+G – Erase Decals / Blood
+Ctrl + Z / Y – Undo / Redo
+
+HUMAN (Possession Mode):
+P – Possess Human
+A / D – Walk
+W – Jump
+S – Crouch
+F – Pick Up / Drop
+Left Click – Use / Attack
+G – Drop Item
+
+============================
+port by 98corbins`);
+
+}).catch((message) => {
+    alert(message);
+});
                 }).catch((message) => {
                     alert(message);
                 });
